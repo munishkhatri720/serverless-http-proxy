@@ -19,10 +19,16 @@ This is a serverless HTTP proxy built using FastAPI and `httpx` that can be depl
 - `httpx` for asynchronous HTTP requests
 - `Mangum` for AWS Lambda compatibility with FastAPI
 
-### Installation
+### Installation on AWS Lambda
 
-Install the required libraries:
+As AWS Lambda doesn't have any support for installing packages from a requiremnets.txt file so we need to zip the required packages with the code in file `lambda_artifacts.zip`
 
+* Install the packages in a custom directroy so we can zip them later
 ```bash
-pip install fastapi httpx mangum
+pip install -t deps -r requirements.txt
+```
+* Copy the app.py file to the `deps` folder
+* Now zip the all files using this command
+```bash
+zip -r lambda_artifacts.zip ./*
 ```
