@@ -32,7 +32,7 @@ pip install -t deps -r requirements.txt
 ```bash
 zip -r lambda_artifacts.zip ./*
 ```
-* Go to AWS Lambda Dashboard and create a lmabda function in any aws region where you want.
+* Go to AWS Lambda Dashboard and create a lambda function in any aws region where you want.
 * Make sure to enable the function url which creating lambda function.
 * Click on upload from button then upload the `lambda_artifacts.zip` file to it.
 * After that change the lambda handler function name to `app.handler`
