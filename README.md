@@ -36,3 +36,30 @@ zip -r lambda_artifacts.zip ./*
 * Make sure to enable the function url which creating lambda function.
 * Click on upload from button then upload the `lambda_artifacts.zip` file to it.
 * After that change the lambda handler function name to `app.handler`
+
+### Usage
+Once deployed, send HTTP requests to your proxy endpoint with the url parameter as follows:
+
+```bash
+GET https://your-lambda-url/proxy?url=https://example.com
+```
+
+```bash
+curl -X POST "https://your-lambda-url/proxy?url=https://example.com" -d '{"key": "value"}' -H "Content-Type: application/json"
+```
+
+```py
+import urllib.parse import quote_plus
+import requests
+
+proxy = "https://*******************mgsdoqd3a0qtutv.lambda-url.eu-central-1.on.aws/proxy"
+
+resp = requests.get(f"{proxy}?url=https://google.com" , headers = {} , json = {})
+
+```
+
+### Important Notes
+* CORS: The proxy does not handle CORS headers by default. Customize CORS settings as needed for your deployment.
+* Serverless Limits: Be mindful of serverless platform limits, including request/response size and execution time.
+
+
