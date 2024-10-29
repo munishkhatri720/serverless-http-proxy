@@ -1,6 +1,6 @@
 # Serverless HTTP Proxy
 
-This is a serverless HTTP proxy built using FastAPI and `httpx` that can be deployed on AWS Lambda or any other serverless platform, allowing you to bypass geo-blocking without the cost of traditional proxies. It supports various HTTP methods (GET, POST, PUT, DELETE, PATCH, OPTIONS) and can handle most content types. By leveraging free serverless hosting, this proxy enables low-cost, high-availability access to resources that may otherwise be regionally restricted.
+This is a serverless HTTP proxy built using FastAPI and `httpx` that can be deployed on AWS Lambda or any other serverless platform, allowing you to bypass geo-blocking without the cost of traditional proxies. It supports various HTTP methods (`GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `OPTIONS`) and can handle most content types. By leveraging free serverless hosting, this proxy enables low-cost, high-availability access to resources that may otherwise be regionally restricted.
 
 ## Features
 
@@ -21,7 +21,7 @@ This is a serverless HTTP proxy built using FastAPI and `httpx` that can be depl
 
 ### Installation on AWS Lambda
 
-As AWS Lambda doesn't have any support for installing packages from a requiremnets.txt file so we need to zip the required packages with the code in file `lambda_artifacts.zip`
+As AWS Lambda doesn't have any support for installing packages from a requirements.txt file so we need to zip the required packages with the code in file `lambda_artifacts.zip`
 
 * Install the packages in a custom directroy so we can zip them later
 ```bash
@@ -32,3 +32,7 @@ pip install -t deps -r requirements.txt
 ```bash
 zip -r lambda_artifacts.zip ./*
 ```
+* Go to AWS Lambda Dashboard and create a lmabda function in any aws region where you want.
+* Make sure to enable the function url which creating lambda function.
+* Click on upload from button then upload the `lambda_artifacts.zip` file to it.
+* After that change the lambda handler function name to `app.handler`
