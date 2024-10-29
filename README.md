@@ -54,7 +54,9 @@ import requests
 
 proxy = "https://*******************mgsdoqd3a0qtutv.lambda-url.eu-central-1.on.aws/proxy"
 
-resp = requests.get(f"{proxy}?url=https://google.com" , headers = {} , json = {})
+url = "https://google.com"
+
+resp = requests.get(f"{proxy}?url={quote_plus(url)}" , headers = {} , json = {})
 
 ```
 
