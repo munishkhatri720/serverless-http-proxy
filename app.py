@@ -25,7 +25,7 @@ async def proxy(request: Request , url : str):
                if key.lower() not in {"content-encoding" , "content-length"}}
     return Response(content=proxy_response.content , status_code=proxy_response.status_code , headers=response_headers)
 
-@app.add_api_route('/proxy/deezer/{song_id}' , methods=["GET"])
+@app.api_route('/proxy/deezer/{song_id}' , methods=["GET"])
 async def deezer_proxy(song_id : int , request : Request) -> JSONResponse:
     try:
         session_id = await get_deezer_sesssion()
