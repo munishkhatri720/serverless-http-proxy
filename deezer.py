@@ -6,14 +6,14 @@ def format_formats(formats : List[str]) -> List[Dict[str ,Any]]:
     return [{"cipher": "BF_CBC_STRIPE", "format": format} for format in formats]
 
 
-async def fetch_as_json(request : httpx.Request):
+async def fetch_as_json(request : httpx.Request) -> Optional[Dict[str , Any]]:
     async with httpx.AsyncClient() as client:
         resp = await client.send(request=request)
         if resp.status_code == 200:
             return resp.json()
         return None
 
-async def get_deezer_sesssion() -> Optional[str]:
+async def get_deezer_session() -> Optional[str]:
     url = "https://www.deezer.com/ajax/gw-light.php?method=deezer.ping&input=3&api_version=1.0&api_token="  
     request = httpx.Request(method="GET" , url=url)
     result = await fetch_as_json(request)
@@ -55,4 +55,3 @@ async def get_media_url(license_token : str , track_token : str) -> Dict[str , A
 }
     request = httpx.Request(method="POST" , url=url , json=data)
     return await fetch_as_json(request)
-    
